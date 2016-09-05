@@ -3,7 +3,7 @@ var jumpTimer = 0;
 
 var Game = {
   preload: function() {
-    game.load.spritesheet('rat', './assets/images/rat.png', 350, 350, 2);
+    game.load.spritesheet('rat', './assets/images/rat.png', 200, 204, 4);
     game.load.spritesheet('sandwich', './assets/images/sandwich.png', 360, 360, 2);
     game.load.image('level2', './assets/images/bckg-level2.png');
     //game.load.image('ground', './assets/images/ground.png');
@@ -32,9 +32,10 @@ var Game = {
 
     //rat - player
     rat = game.add.sprite(65, 400, 'rat', 2);
-    rat.scale.set(0.3);
+    rat.scale.set(0.5);
 
-    rat.animations.add('walk', [0, 1], 5, true);
+    rat.animations.add('walk-left', [0,1], 5, true);
+    rat.animations.add('walk-right', [2, 3], 5, true);
 
     game.camera.follow(rat);
 
@@ -65,12 +66,12 @@ var Game = {
 
     if (cursors.right.isDown)
     {
-        rat.animations.play('walk');
+        rat.animations.play('walk-right');
         rat.body.velocity.x = 250;
     }
     else if (cursors.left.isDown)
     {
-        rat.animations.play('walk');
+        rat.animations.play('walk-left');
         rat.body.velocity.x = -250;
     }
     else if (cursors.up.isDown && rat.body.onFloor() && game.time.now > jumpTimer)

@@ -1,4 +1,4 @@
-var rat, sanwich, timeTextValue, gameTimeValue, ratAnim, bckg, score, scoreTextVal, textStyle, cursors, ground, tilemap, map, layer;
+var rat, sandwich, timeTextValue, gameTimeValue, sandAnim, bckg, score, scoreTextVal, textStyle, cursors, ground, tilemap, map, layer;
 var jumpTimer = 0;
 
 var Game = {
@@ -43,6 +43,12 @@ var Game = {
 
     rat.body.bounce.y = 0.2;
     rat.body.collideWorldBounds = true;
+
+    //sandwich spawn -> collision == game over
+    sandwich = game.add.sprite(2900, 15, 'sandwich', 2);
+    sandwich.scale.set(0.2);
+    sandAnim = sandwich.animations.add('blink');
+    sandAnim.play(4, true);
 
     //round timer
     gameTimeValue = 0;

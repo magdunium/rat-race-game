@@ -5,17 +5,15 @@ var Game = {
   preload: function() {
     game.load.spritesheet('rat', './assets/images/rat.png', 200, 204, 4);
     game.load.spritesheet('sandwich', './assets/images/sandwich.png', 360, 360, 2);
-    game.load.image('level2', './assets/images/bckg-level2.png');
     //game.load.image('ground', './assets/images/ground.png');
-    game.load.tilemap('map', './assets/images/map.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('map', './assets/images/ground.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles', './assets/images/bckg-level2.png');
-
   },
 
   create: function(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.world.setBounds(0, 0, 1200, 600);
-    bckg = game.add.tileSprite(0, 0, 800, 600, 'level2');
+    game.world.setBounds(0, 0, 3000, 600);
+    bckg = game.add.tileSprite(0, 0, 3000, 600, 'tiles');
     //ground = game.add.tileSprite(0, 0, 800, 600, 'ground');
 
     map = game.add.tilemap('map');
@@ -32,7 +30,7 @@ var Game = {
 
     //rat - player
     rat = game.add.sprite(65, 400, 'rat', 2);
-    rat.scale.set(0.5);
+    rat.scale.set(0.3);
 
     rat.animations.add('walk-left', [0,1], 5, true);
     rat.animations.add('walk-right', [2, 3], 5, true);

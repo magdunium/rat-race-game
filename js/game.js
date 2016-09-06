@@ -21,6 +21,7 @@ var Game = {
 
     //map collision
     map.setCollision(1);
+    map.setCollision(2);
 
     layer = map.createLayer('World1');
     cursors = game.input.keyboard.createCursorKeys();
